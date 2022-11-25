@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get selected button</title>
+    <style>
+        body{
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        button{
+            padding: 1.5vw;
+        }
+        .selected{
+            border: .25vw solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>click on button to select</h1>
+    <button type="button" id="btn1" class="btnP">btn1</button>
+    <button type="button" id="btn2" class="btnP">btn2</button>
+    <button type="button" id="btn3" class="btnP">btn3</button>
+
+    <div>
+        <br>
+        <button onclick="getSelect()" type="button">Get selected results</button>
+        <br>
+    </div>
+</body>
+<script>
+    let cB = document.querySelectorAll('.btnP');
+    function cdiv(element) {
+        for (const c of cB) {
+            c.classList[c === element ? 'add' : 'remove']('selected');
+        }
+    }
+
+    for(const s of cB){
+        s.addEventListener('click', function(){
+            cdiv(this);
+        });
+    }
+
+    const getSelect = ()=>{
+        let s = document.querySelector('.selected');
+        alert('You have selected: '+s.id);
+    }
+</script>
+
+</html>
